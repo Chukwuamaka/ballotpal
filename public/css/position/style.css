@@ -1,0 +1,431 @@
+/*--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+--*/
+
+/* reset */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+dl,
+dt,
+dd,
+ol,
+nav ul,
+nav li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* start editing from here */
+
+a {
+    text-decoration: none;
+}
+
+/*end reset*/
+
+body {
+    background: url(../../images/2.jpg) no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 100%;
+}
+
+div#user {
+    display: -webkit-flex;
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+/* For public/admin/dashboard/position.html */
+div.margin-bottom {
+    margin-bottom: 10vw;
+}
+/* For public/admin/dashboard/position.html */
+
+div#user * {
+    color: #fff;
+}
+
+div#user .fas.fa-user {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+div#user span#hello {
+    display: inline-block;
+}
+
+div#user span#hello a {
+    color: #3369e7;
+}
+
+/*-- title --*/
+
+/* For public/position.html */
+h1 {
+    font-size: 2.5em;
+    color: #fff;
+    letter-spacing: 2px;
+    text-align: center;
+    margin: 3vw 1vw;
+    font-family: 'Reem Kufi', sans-serif;
+}
+/* For public/position.html */
+
+/*-- //title --*/
+
+/*-- content --*/
+
+.sub-main-w3 {
+    display: -webkit-flex;
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.sub-main-w3 form {
+    max-width: 600px;
+    margin: 0 5vw;
+    background: #fff;
+    padding: 5.3vw 4vw;
+    box-sizing: border-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.form-style-agile {
+    margin-bottom: 2em;
+    flex-basis: 100%;
+    -webkit-flex-basis: 100%;
+    font-weight: 500;
+}
+
+.sub-main-w3 label {
+    width: 100%;
+    font-size: 110%;
+    display: inline-block;
+    font-weight: 700;
+    margin-bottom: 13px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.sub-main-w3 label i {
+    font-size: 16px;
+    margin-left: 5px;
+    color: #000;
+    border-radius: 50%;
+    line-height: 1.9;
+    text-align: center;
+}
+
+.form-style-agile select {
+    width: 100%;
+    outline: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 15px 15px;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    color: #000;
+    background: #fff;
+}
+
+/* For public/admin/dashboard/position.html */
+.wthree-text {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.wthree-text ul {
+    display: -webkit-flex;
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.wthree-text ul li {
+    flex-basis: 50%;
+    -webkit-flex-basis: 50%;
+}
+
+.wthree-text ul li:nth-child(2) {
+    text-align: right;
+}
+
+.wthree-text .checkout-w3l a#showResult, .wthree-text a#reset {
+    display: inline-block;
+    color: #fff;
+    background: #3369e7;
+    border: none;
+    border-radius: 5px;
+    padding: 13px 15px;
+    outline: none;
+    font-size: 14px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    text-align: center;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.49);
+}
+/* For public/admin/dashboard/position.html */
+
+.sub-main-w3 form p.submitButton {
+    background: #3369e7;
+    border: none;
+    margin-top: 30px;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    text-align: center;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.49);
+}
+
+.sub-main-w3 form p.submitButton:hover, .wthree-text .checkout-w3l a#showResult:hover, .wthree-text a#reset:hover {
+    background: #000;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
+}
+
+.sub-main-w3 form p.submitButton a {
+    display: block;
+    color: #fff;
+    padding: 13px 0;
+}
+
+/*-- //content --*/
+
+/*-- copyright --*/
+
+.footer {
+    margin: 4vw .3vw 2vw;
+}
+
+.footer p {
+    font-size: 14px;
+    color: #fff;
+    letter-spacing: 2px;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.footer p a {
+    color: #fff;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
+}
+
+.footer p a:hover {
+    color: #03A9F4;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
+}
+
+/*-- //copyright --*/
+
+/*--responsive--*/
+
+@media(max-width:1920px) {
+    h1 {
+        font-size: 3vw;
+    }
+}
+
+@media(max-width:1024px) {
+    h1 {
+        font-size: 4.5vw;
+    }
+}
+
+@media(max-width:800px) {
+    h1 {
+        font-size: 2.6em;
+    }
+}
+
+@media(max-width:480px) {
+    h1 {
+        font-size: 2.3em;
+    }
+    .sub-main-w3 form {
+        padding: 7.5vw;
+    }
+    .footer p {
+        letter-spacing: 1px;
+    }
+}
+
+@media(max-width:414px) {
+    /* .form-style-agile input[type="text"],
+    .form-style-agile input[type="password"] {
+        font-size: 13px;
+        padding: 13px 15px;
+    }
+    .wthree-text ul li:nth-child(1),
+    .wthree-text ul li:nth-child(2) {
+        float: none;
+    } */
+    .wthree-text ul li:nth-child(2) {
+        margin-top: 10px;
+    }
+}
+
+@media(max-width:320px) {
+    h1 {
+        font-size: 1.8em;
+    }
+    .sub-main-w3 form {
+        padding: 25px 14px;
+    }
+}
+
+/*--//responsive--*/

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta tag Keywords -->
+        <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="ID=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Admin Dashboard</title>
+
+        <script>
+            addEventListener("load", function () {
+                setTimeout(hideURLbar, 0);
+            }, false);
+    
+            function hideURLbar() {
+                window.scrollTo(0, 1);
+            }
+        </script>
+        <!-- Meta tag Keywords -->
+        <!-- css files -->
+        <link rel="stylesheet" href="../../css/dashboard/style.css" type="text/css" media="all" />
+        <!-- Style-CSS -->
+        <link rel="stylesheet" href="../../css/dashboard/fontawesome-all.css">
+        <!-- Font-Awesome-Icons-CSS -->
+        <!-- //css files -->
+    </head>
+    <body>
+        <div id="user" class="margin-bottom">
+            <p>
+                <i class="fas fa-user"></i>
+                <span id="hello"></span>
+            </p>
+        </div>
+
+        <div class="actions">
+            <div><a href="position.html" class="choosePosition">Show Result</a></div>
+            <div><a href="" id="showAll">Show All Results</a></div>
+            <div><a href="position.html" class="choosePosition">Reset</a></div>
+            <div><a href="./" id="resetAll">Reset All</a></div>
+        </div>
+
+        <!-- copyright -->
+        <div class="footer">
+            <p>
+                Designed and developed by <a href="http://www.linkedin.com/in/chukwuamakaosuji">SenseiAmaka</a><br>
+                &copy; 2018. All rights reserved
+            </p>
+        </div>
+        <!-- //copyright -->
+
+        <script type="text/javascript">
+            const showAll = document.getElementById("showAll");
+            const resetAll = document.getElementById("resetAll");
+
+            if(sessionStorage.admin === undefined) {
+                document.getElementById('hello').innerHTML = "Please <a href='../login.html'>log in</a>";
+            } else {
+                document.getElementById('hello').innerHTML = `Hello,<br> ${sessionStorage.admin}`;
+            }
+
+            showAll.addEventListener("click", () => {
+                fetch('/results')
+                .then(response => (response.json()))
+                .then(json => {
+                    var output = "";
+                    for(var i=0; i<json.length; i++) {
+                        output += `
+                            <h4>${json[i].position}</h4>
+                            <p>Number of Votes</p>
+                            <p><span>Candidate A: ${json[i].A}</span><br>
+                            <span>Candidate B: ${json[i].B}</span><br>
+                            <span>Candidate C: ${json[i].C}</span><br></p>
+                        `
+                    }
+                    document.write(output + "<p><a href='./'>Back to Dashboard</a></p>");
+                })
+                .catch(error => console.error(error));
+            });
+            
+            resetAll.addEventListener('click', () => {
+                var data = {};
+                const options = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                }
+
+                fetch('/resetAll', options)
+                .then(response => (response.text()))
+                .then(text => alert(text))
+                .catch(error => console.error(error));
+            });
+        </script>
+    </body>
+</html>

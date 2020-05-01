@@ -1,0 +1,159 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+	<title>Choose Position</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=0.92">
+	<meta http-equiv="X-UA-Compatible" content="ID=edge">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Classic Sign In Form Responsive Widget, Login form widgets, Sign up Web forms , Login signup Responsive web form, Flat Pricing table, Flat Drop downs, Registration Forms, News letter Forms, Elements"
+	/>
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- Meta tag Keywords -->
+	<!-- css files -->
+	<link rel="stylesheet" href="../../css/position/style.css" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<link rel="stylesheet" href="../../css/position/fontawesome-all.css">
+	<!-- Font-Awesome-Icons-CSS -->
+	<!-- //css files -->
+	<!-- web-fonts -->
+	<link href="//fonts.googleapis.com/css?family=Reem+Kufi&amp;subset=arabic" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+	<!-- //web-fonts -->
+</head>
+
+<body>
+	<div id="user" class="margin-bottom">
+		<p>
+			<i class="fas fa-user"></i>
+			<span id="hello"></span>
+		</p>
+	</div>
+
+	<!-- content -->
+
+	<div class="sub-main-w3">
+		<form>
+			<div class="form-style-agile">
+				<label>
+					Choose a Position
+					<i class="fas fa-user"></i>
+				</label>
+				<select id="position">
+					<option disabled selected>Choose a Position</option>
+					<option>President</option>
+					<option>Vice President</option>
+					<option>General Secretary</option>
+					<option>Assistant General Secretary</option>
+					<option>Financial Secretary</option>
+					<option>Treasurer</option>
+					<option>Librarian</option>
+					<option>Provost/PRO</option>
+				</select>
+			</div>
+
+			<div class="wthree-text">
+				<ul>
+					<li>
+						<!-- Display Result Button -->
+						<div class="checkout-w3l">
+							<a href="#" id="showResult">Display Result</a>
+						</div>
+						<!-- //Display Result Button -->
+					</li>
+					<li>
+						<!-- Reset Result Button -->
+						<div>
+							<a href="../dashboard" id="reset">Reset Result</a>
+						</div>
+						<!-- //Reset Result Button -->
+					</li>
+				</ul>
+			</div>
+		</form>
+	</div>
+	<!-- //content -->
+
+	<!-- copyright -->
+	<div class="footer">
+		<p>&copy; 2018 Classic Sign In Form. All rights reserved<br>
+			Design by <a href="http://w3layouts.com">W3layouts</a> | 
+			Developed by <a href="http://www.linkedin.com/in/chukwuamakaosuji">SenseiAmaka</a>
+		</p>
+	</div>
+	<!-- //copyright -->
+
+	<script type="text/javascript">
+		const showResult = document.getElementById("showResult");
+		const reset = document.getElementById("reset");
+		const position = document.getElementById("position");
+
+		if(sessionStorage.admin === undefined) {
+			document.getElementById('hello').innerHTML = "Please <a href='login.html'>log in</a>";
+        } else {
+            document.getElementById('hello').innerHTML = `Hello,<br> ${sessionStorage.admin}`;
+        }
+
+		showResult.addEventListener("click", () => {
+			var selectedPosition = position.value;
+			var data = {position: selectedPosition};
+			const options = {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			};
+
+			fetch('/result', options)
+			.then(response => response.json())
+			.then(json => {
+				document.write(`
+					<h4>${json.position}</h4>
+					<p>Number of Votes</p>
+					<p>
+						<span>Candidate A: ${json.A}</span><br>
+						<span>Candidate B: ${json.B}</span><br>
+						<span>Candidate C: ${json.C}</span>
+					</p>
+					<p><a href='../dashboard'>Back to Dashboard</a></p>
+				`);
+			})
+			.catch(error => console.error(error));
+		});
+		
+		reset.addEventListener("click", () => {
+			var selectedPosition = position.value;
+			var data = {position: selectedPosition};
+			const options = {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			}
+
+			fetch('/reset', options)
+			.then(response => (response.text()))
+			.then(text => alert(text))
+			.catch(error => console.error(error));
+		});
+	</script>
+
+</body>
+
+</html>

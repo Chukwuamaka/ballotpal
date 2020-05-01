@@ -1,0 +1,160 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+	<title class="title"></title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ID=edge">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Classic Sign In Form Responsive Widget, Login form widgets, Sign up Web forms , Login signup Responsive web form, Flat Pricing table, Flat Drop downs, Registration Forms, News letter Forms, Elements"
+	/>
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- Meta tag Keywords -->
+	<!-- css files -->
+	<link rel="stylesheet" href="css/vote/style.css" type="text/css" media="all" />
+	<!-- <link rel="stylesheet" href="css/style (2).css" type="text/css" media="all" /> -->
+	<!-- Style-CSS -->
+	<link rel="stylesheet" href="css/vote/fontawesome-all.css">
+	<!-- Font-Awesome-Icons-CSS -->
+	<!-- //css files -->
+	<!-- web-fonts -->
+	<link href="//fonts.googleapis.com/css?family=Reem+Kufi&amp;subset=arabic" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+	<!-- //web-fonts -->
+</head>
+
+<body>
+	<div id="user">
+		<p>
+			<i class="fas fa-user"></i>
+			<span id="hello"></span>
+		</p>
+	</div>
+
+	<!-- title -->
+	<h1 class="title"></h1>
+	<!-- //title -->
+
+	<!-- content -->
+
+	<div class="sub-main-w3">
+		<form>
+			<div class="form-style-agile">
+				<label>
+					Candidates
+					<i class="fas fa-user"></i>
+				</label>
+				<input type="radio" name="candidate" value="A" id="radio">A <br>
+				<input type="radio" name="candidate" value="B">B <br>
+				<input type="radio" name="candidate" value="C">C
+			</div>
+
+			<div class="wthree-text">
+				<ul>
+					<li>
+						<!-- Vote Button -->
+						<div class="checkout-w3l">
+							<button type="reset" id="vote">Vote</button>
+						</div>
+						<!-- //Vote Button -->
+					</li>
+					<li>
+						<!-- Submit Results Button -->
+						<div>
+							<a href="position.html" id="submit">Submit Results</a>
+						</div>
+						<!-- //Submit Results Button -->
+					</li>
+				</ul>
+			</div>
+			<p class="note">Note: Click the "Submit Results" button after everyone assigned to your polling unit has voted</p>
+		</form>
+	</div>
+	<!-- //content -->
+
+	<!-- copyright -->
+	<div class="footer">
+		<p>&copy; 2018 Classic Sign In Form. All rights reserved<br>
+			Design by <a href="http://w3layouts.com">W3layouts</a> | 
+			Developed by <a href="http://www.linkedin.com/in/chukwuamakaosuji">SenseiAmaka</a>
+		</p>
+	</div>
+	<!-- //copyright -->
+
+	<script type="text/javascript">
+		var A = 0,
+			B = 0,
+			C = 0,
+			title = document.getElementsByClassName('title'),
+			year = new Date().getFullYear();
+        
+		const voteButton = document.getElementById("vote"),
+			  submitButton = document.getElementById("submit"),
+              showResult = document.getElementById("showResult");
+
+		if(sessionStorage.username === undefined) {
+			document.getElementById('hello').innerHTML = "Please <a href='login.html'>log in</a>";
+        } else {
+            document.getElementById('hello').innerHTML = `Hello,<br> ${sessionStorage.username}`;
+        }
+              
+        for (let i = 0; i < title.length; i++) {
+            title[i].innerText = year + " Lay Readers' Association General Elections";	
+        }
+
+		voteButton.addEventListener("click", () => {
+			var candidate = document.querySelector("input:checked").value;
+
+			if (candidate === 'A') {
+				A += 1;
+			}
+			else if (candidate === 'B') {
+				B += 1;
+			}
+			else if (candidate === 'C') {
+				C += 1;
+            }
+            
+            alert("You have voted successfully!");
+		});
+
+		submitButton.addEventListener("click", () => {
+			const data =  {
+				position: sessionStorage.position,
+				A: A, 
+				B: B, 
+				C: C, 
+				User: sessionStorage.username
+			};
+			const options = {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			}
+
+			fetch('/submit', options)
+			.then(response => response.text())
+			.then(text => alert(text))
+			.catch(error => console.error(error));
+		});
+	</script>
+
+</body>
+
+</html>

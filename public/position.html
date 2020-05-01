@@ -1,0 +1,132 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+	<title>Choose Position</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ID=edge">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Classic Sign In Form Responsive Widget, Login form widgets, Sign up Web forms , Login signup Responsive web form, Flat Pricing table, Flat Drop downs, Registration Forms, News letter Forms, Elements"
+	/>
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- Meta tag Keywords -->
+	<!-- css files -->
+	<link rel="stylesheet" href="css/position/style.css" type="text/css" media="all" />
+	<!-- <link rel="stylesheet" href="css/style (2).css" type="text/css" media="all" /> -->
+	<!-- Style-CSS -->
+	<link rel="stylesheet" href="css/position/fontawesome-all.css">
+	<!-- Font-Awesome-Icons-CSS -->
+	<!-- //css files -->
+	<!-- web-fonts -->
+	<link href="//fonts.googleapis.com/css?family=Reem+Kufi&amp;subset=arabic" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+	<!-- //web-fonts -->
+</head>
+
+<body>
+	<div id="user">
+		<p>
+			<i class="fas fa-user"></i>
+			<span id="hello"></span>
+		</p>
+	</div>
+
+	<!-- title -->
+	<h1 class="title"></h1>
+	<!-- //title -->
+
+	<!-- content -->
+
+	<div class="sub-main-w3">
+		<form>
+			<div class="form-style-agile">
+				<label>
+					Choose a Position
+					<i class="fas fa-user"></i>
+				</label>
+				<select id="position">
+					<option disabled selected>Choose a Position</option>
+					<option>President</option>
+					<option>Vice President</option>
+					<option>General Secretary</option>
+					<option>Assistant General Secretary</option>
+					<option>Financial Secretary</option>
+					<option>Treasurer</option>
+					<option>Librarian</option>
+					<option>Provost/PRO</option>
+				</select>
+			</div>
+
+			<p class="submitButton"><a href="vote.html" id="submit">Submit</a></p>
+		</form>
+	</div>
+	<!-- //content -->
+
+	<!-- copyright -->
+	<div class="footer">
+		<p>&copy; 2018 Classic Sign In Form. All rights reserved<br>
+			Design by <a href="http://w3layouts.com">W3layouts</a> | 
+			Developed by <a href="http://www.linkedin.com/in/chukwuamakaosuji">SenseiAmaka</a>
+		</p>
+	</div>
+	<!-- //copyright -->
+
+	<script type="text/javascript">
+		var title = document.getElementsByClassName('title'),
+			year = new Date().getFullYear();
+
+		const position = document.getElementById("position"),
+			  submitButton = document.getElementById("submit");
+			  
+        if(sessionStorage.username === undefined) {
+            document.getElementById('hello').innerHTML = "Please <a href='login.html'>log in</a>";
+        } else {
+            document.getElementById('hello').innerHTML = `Hello,<br> ${sessionStorage.username}`;
+        }
+
+        for (let i = 0; i < title.length; i++) {
+            title[i].innerText = year + " Lay Readers' Association General Elections";	
+        }
+
+		submitButton.addEventListener("click", () => {
+			sessionStorage.position = position.value;
+			var initialData = {
+				position: sessionStorage.position, 
+				A: 0, 
+				B: 0, 
+				C: 0,
+				User: sessionStorage.username
+			}
+
+			const options = {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(initialData)
+			}
+			
+			fetch('/position', options)
+			.then(response => response.text())
+			.then(text => console.log(text))
+			.catch(error => console.error(error));
+		});
+	</script>
+
+</body>
+
+</html>

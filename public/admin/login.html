@@ -1,0 +1,149 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+	<title>Sign In | Admin Panel</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ID=edge">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Classic Sign In Form Responsive Widget, Login form widgets, Sign up Web forms , Login signup Responsive web form, Flat Pricing table, Flat Drop downs, Registration Forms, News letter Forms, Elements"
+	/>
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- Meta tag Keywords -->
+	<!-- css files -->
+	<link rel="stylesheet" href="../css/login/style.css" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<link rel="stylesheet" href="../css/login/fontawesome-all.css">
+	<!-- Font-Awesome-Icons-CSS -->
+	<!-- //css files -->
+	<!-- web-fonts -->
+	<link href="//fonts.googleapis.com/css?family=Reem+Kufi&amp;subset=arabic" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+	<!-- //web-fonts -->
+</head>
+
+<body>
+	<!-- title -->
+	<h1>
+		<span>A</span>dmin
+		<span>P</span>anel
+	</h1>
+	<!-- //title -->
+	<!-- content -->
+	<div class="sub-main-w3">
+		<form>
+			<div class="form-style-agile">
+				<label>
+					Username
+					<i class="fas fa-user"></i>
+				</label>
+				<input id="username" placeholder="Username" type="text" required autocomplete>
+			</div>
+			<div class="form-style-agile">
+				<label>
+					Password
+					<i class="fas fa-unlock-alt"></i>
+				</label>
+				<input id="password" placeholder="Password" type="password" required autocomplete>
+			</div>
+			<div class="wthree-text">
+				<ul>
+					<li>
+						<div class="checkout-w3l">
+							<p>Don't have an account? <a href="./">Register</a></p>
+						</div>
+					</li>
+					<li>
+						<a href="#">Forgot Password?</a>
+					</li>
+				</ul>
+			</div>
+			<p class="loginButton"><a href="" id="login">Log in</a></p>
+		</form>
+	</div>
+	<!-- //content -->
+
+	<!-- copyright -->
+	<div class="footer">
+		<p>&copy; 2018 Classic Sign In Form. All rights reserved<br>
+			Design by <a href="http://w3layouts.com">W3layouts</a> | 
+			Developed by <a href="http://www.linkedin.com/in/chukwuamakaosuji">SenseiAmaka</a>
+		</p>
+	</div>
+	<!-- //copyright -->
+	
+	<script type="text/javascript">
+		var users,
+			admin =  document.getElementById("username"),
+			password =  document.getElementById("password"),
+			errorParagraph = document.createElement('p');
+
+		const form = document.querySelector("form"),
+			  loginButton = document.getElementById('login');
+		
+		fetch('/login')
+		.then(response => response.json())
+		.then(json => {
+			users = json;
+		})
+		.catch(error => console.error(error));
+		
+		loginButton.addEventListener('click', () => {
+			var accountExists,
+				isAuthorized,
+				count = 0;
+				
+			for(var i=0; i<users.length; i++) {
+				if(username.value.toLowerCase() === users[i].Name.Username && password.value === users[i].Password) {
+					accountExists = true;
+					if(users[i].Designation === "Admin") {
+						isAuthorized = true;
+						break;
+					}
+					else {
+						count++;
+						isAuthorized = false;
+					}
+				}
+
+				else {
+					accountExists = false;
+				}
+			}
+
+			if(accountExists && isAuthorized) {
+				loginButton.setAttribute('href', 'dashboard');
+				sessionStorage.admin = admin.value;
+			}
+			else if (accountExists && !isAuthorized || count>0 && !isAuthorized) {
+				loginButton.setAttribute('href', '#');
+				errorParagraph.innerHTML = "You are not authorized to access this page";
+				errorParagraph.className = "errorParagraph";
+				form.insertBefore(errorParagraph, form.childNodes[0]);
+			}
+			else if (!accountExists) {
+				loginButton.setAttribute('href', '#');
+				errorParagraph.innerHTML = "Incorrect username and/or password. Try again or <a href='./'>register here</a>, if you don't have an account yet";
+				errorParagraph.className = "errorParagraph";
+				form.insertBefore(errorParagraph, form.childNodes[0]);
+			}
+		});
+	</script>
+
+</body>
+
+</html>

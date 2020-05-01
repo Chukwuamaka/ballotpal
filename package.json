@@ -1,0 +1,22 @@
+{
+  "name": "ballotpal",
+  "version": "2.0.0",
+  "description": "Lay Readers' Association Electronic Voting Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "election",
+    "voting",
+    "e-voting",
+    "electronic",
+    "voting"
+  ],
+  "author": "Chukwuamaka Osuji",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nedb": "^1.8.0"
+  }
+}
