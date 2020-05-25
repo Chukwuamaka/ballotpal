@@ -15,6 +15,8 @@ BallotPal was originally built for a specific user, to be used on devices connec
 - Download or clone this repository to a local directory on your device using the green `Clone or download` button in the desktop version of this page.
 - Upload the downloaded files to a server of your choice.
 - Open the app with the root URL provided by your hosting provider, **e.g.** [https://ballotpal.herokuapp.com](https://ballotpal.herokuapp.com)
-- If you are a first time user, sign up as a user on the homepage. To sign up as an admin, go to `therooturl/admin`, **e.g.** [https://ballotpal.herokuapp.com/admin](https://ballotpal.herokuapp.com/admin). From the admin dashboard, you can check results and also reset results, in case a do-over is necessary. We advise that you get acquainted with the app's functionalities before using it for official purposes.
+- If you are a first time user, sign up as a user on the homepage. To sign up as an admin, go to `therooturl/admin`, **e.g.** [https://ballotpal.herokuapp.com/admin](https://ballotpal.herokuapp.com/admin). From the admin dashboard, you can check results and also reset results, in case a do-over is necessary. For the purpose of accuracy, reset all results before using the app for any electoral process. We advise that you get acquainted with the app's functionalities before using it for official purposes. 
 
 **Note:** The URLs provided on any part of this repository or its READMEs where versions of this app may have been hosted are for display and sample purposes only. Do not attempt to use the app from any of these URLs for official purposes.
+
+**_More details loading..._**
