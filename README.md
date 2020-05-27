@@ -26,7 +26,26 @@ You can download the files by:
        
      - If your installation was successful, change the directory to the preferred location you would like to clone or download the app's files. If you haven't the faintest idea how to do this, follow [this guide](https://www.digitalcitizen.life/command-prompt-how-use-basic-commands) for Windows users. If you are on a Mac, check [this](https://www.macworld.com/article/2042378/master-the-command-line-navigating-files-and-folders.html), and for Linux users, check [here](https://www.cyberciti.biz/faq/how-to-change-directory-in-linux-terminal/). To use git bash in place of the Command Prompt or Terminal, follow [this guide](https://www.toolsqa.com/git/common-directory-commands-on-git-bash/) instead.
      - After changing to your preferred directory, run `git clone https://github.com/Chukwuamaka/ballotpal.git`. If you prefer downloading v1.0 files, run `git clone -b v1.0 https://github.com/Chukwuamaka/ballotpal.git` instead. You should see something like this if your download was successful.
-     ```
+     
+       ```
+       Microsoft Windows [Version 10.0.17134.1006]
+       (c) 2018 Microsoft Corporation. All rights reserved.
+     
+       C:\Users\HP>cd desktop
+     
+       C:\Users\HP\Desktop>git clone https://github.com/Chukwuamaka/ballotpal.git
+       Cloning into 'ballotpal'...
+       remote: Enumerating objects: 111, done.
+       remote: Counting objects: 100% (111/111), done.
+       remote: Compressing objects: 100% (100/100), done.
+     
+       s
+       Receiving objects: 100% (111/111), 1.89 MiB | 525.00 KiB/s, done.
+       Resolving deltas: 100% (25/25), done.
+       
+       
+       C:\Users\HP\Desktop>
+       ```
 
 ### Using BallotPal from a Remote Server
 - Upload the downloaded files to a server of your choice.
