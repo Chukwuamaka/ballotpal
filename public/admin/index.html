@@ -115,7 +115,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		const form = document.querySelector("form"),
 			  registerButton = document.getElementById("register");
 
-		fetch('/login')
+		fetch('/login/authorize')
 		.then(response => response.json())
 		.then(json => {
 			users = json;

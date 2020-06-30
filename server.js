@@ -71,7 +71,7 @@ app.post('/register', (request, response) => {
 
 //"Handles Request from public/admin/index.html, public/index.html, public/admin/login.html and public/login.html"
 //Gets user information from the database
-app.get('/login', (request, response) => {
+app.get('/login/authorize', (request, response) => {
   db.users.find({}, (error, results) => {
     response.json(results);
   });
