@@ -1,6 +1,7 @@
 const express = require('express'),
     app = express(),
     Datastore = require('nedb'),
+    path = require('path');
     hostname = undefined,
     port = process.env.PORT || 3000;
 // const router = express.Router();
@@ -11,6 +12,22 @@ app.listen(port, hostname, () => {
 app.use(express.static('public'));
 app.use(express.json({limit: '1mb'}));
 
+//"Handles Request from public/admin/index.html and public/index.html"
+//Save user information to the database
+app.post('/register', (request, response) => {
+  db.users.insert(request.body);
+  console.log(`${request.body.Name.Username} successfully registered`)
+  response.send("Registration Successful");
+});
+
+//"Handles Request from public/admin/index.html, public/index.html, public/admin/login.html and public/login.html"
+//Get user information from the database
+app.get('/login/authorize', (request, response) => {
+  db.users.find({}, (error, results) => {
+    response.json(results);
+  });
+});
+
 //"Handles Request from public/position.html"
 //Save position being voted for and its related data
 app.post('/position', (request, response) => {
@@ -18,6 +35,16 @@ app.post('/position', (request, response) => {
   db.database.update({position: initialData.position}, {$set: {User: initialData.User}, $inc: {A: initialData.A, B: initialData.B, C: initialData.C}}, {upsert: true});
   console.log(`Position posted successfully: ${initialData.position}`);
   response.send("Success");
+});
+
+//Redirect to vote.html
+app.get('/vote', (request, response) => {
+  response.sendFile(path.join(__dirname, "./public/vote.html"), (err) => {
+    if(err)
+      console.log(err);
+    else
+      console.log("Redirect Successful!");
+  });
 });
 
 //"Handles Request from public/vote.html"
@@ -59,22 +86,6 @@ app.post('/resetAll', (request, response) => {
   db.database.remove(request.body, {multi: true});
   console.log("Reset Successful");
   response.send(`All results have been successfully reset`);
-});
-
-//"Handles Request from public/admin/index.html and public/index.html"
-//Save user information to the database
-app.post('/register', (request, response) => {
-  db.users.insert(request.body);
-  console.log(`${request.body.Name.Username} successfully registered`)
-  response.send("Registration Successful");
-});
-
-//"Handles Request from public/admin/index.html, public/index.html, public/admin/login.html and public/login.html"
-//Gets user information from the database
-app.get('/login/authorize', (request, response) => {
-  db.users.find({}, (error, results) => {
-    response.json(results);
-  });
 });
 
 const db = {};
